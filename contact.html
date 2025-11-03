@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>اتصل بنا - الإلكترونيات الحديثة</title>
+  <style>
+    :root {
+      --hm-blue: #1f6feb;
+      --hm-bg: #0b1020;
+      --hm-card: #161b22;
+      --hm-text: #e5e7eb;
+      --hm-border: #2d333b;
+      --hm-radius: 14px;
+      --hm-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--hm-bg);
+      color: var(--hm-text);
+      direction: rtl;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 16px;
+      background: linear-gradient(135deg, #10131a, #1f2430, #2b2f36);
+      border-bottom: 1px solid var(--hm-border);
+    }
+    footer { border-top: 1px solid var(--hm-border); margin-top: auto; }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .contact-card {
+      background: var(--hm-card);
+      padding: 30px;
+      border-radius: var(--hm-radius);
+      border: 1px solid var(--hm-border);
+      box-shadow: var(--hm-shadow);
+      width: min(600px, 90%);
+      display: grid;
+      gap: 16px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #aeb9c8;
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--hm-border);
+      background: #0f1422;
+      color: var(--hm-text);
+      outline: none;
+      transition: border-color .3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--hm-blue);
+    }
+
+    textarea { resize: vertical; min-height: 100px; }
+
+    button {
+      background: var(--hm-blue);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover { filter: brightness(1.1); }
+
+    .success-msg {
+      text-align: center;
+      color: #10b981;
+      font-weight: 600;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>الإلكترونيات الحديثة ⚡</h2>
+  </header>
+
+  <main>
+    <form class="contact-card" id="contactForm">
+      <h1>اتصل بنا</h1>
+      <label for="name">الاسم الكامل</label>
+      <input type="text" id="name" required placeholder="أدخل اسمك الكامل">
+
+      <label for="email">البريد الإلكتروني</label>
+      <input type="email" id="email" required placeholder="example@email.com">
+
+      <label for="message">الرسالة</label>
+      <textarea id="message" required placeholder="اكتب رسالتك هنا..."></textarea>
+
+      <button type="submit">إرسال الرسالة</button>
+      <p class="success-msg" id="successMsg">تم إرسال رسالتك بنجاح ✅</p>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 الإلكترونيات الحديثة - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const msg = document.getElementById("successMsg");
+      msg.style.display = "block";
+      this.reset();
+      setTimeout(() => msg.style.display = "none", 4000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!-- footer.html -->
+<footer class="hm-footer" aria-label="تذييل الموقع">
+  <div class="hm-foot-wrap">
+
+    <section class="hm-foot-brand">
+      <h3 class="hm-title">الإلكترونيات الحديثة</h3>
+      <p class="hm-desc">
+        متجر متخصص ببيع المنتجات الإلكترونية الأصلية مع ضمان معتمد. شحن سريع لجميع مناطق المملكة.
+      </p>
+      <div class="hm-social">
+        <a href="#" aria-label="تويتر">𝕏</a>
+        <a href="#" aria-label="انستجرام">⌾</a>
+        <a href="#" aria-label="يوتيوب">▶</a>
+      </div>
+    </section>
+
+    <section class="hm-foot-links">
+      <h4>روابط مهمة</h4>
+      <ul>
+        <li><a href="#">من نحن</a></li>
+        <li><a href="#">سياسة الخصوصية</a></li>
+        <li><a href="#">شروط الاستخدام</a></li>
+        <li><a href="#">الضمان والاسترجاع</a></li>
+      </ul>
+    </section>
+
+    <section class="hm-foot-help">
+      <h4>خدمة العملاء</h4>
+      <ul>
+        <li><a href="#">تتبع الطلب</a></li>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#">اتصل بنا</a></li>
+      </ul>
+    </section>
+
+    <section class="hm-foot-newsletter">
+      <h4>النشرة البريدية</h4>
+      <form onsubmit="return window.hmFooter.subscribe(event);" class="hm-news-form">
+        <input type="email" name="email" placeholder="بريدك الإلكتروني" aria-label="أدخل بريدك الإلكتروني" required>
+        <button type="submit">اشترك</button>
+      </form>
+      <p id="hmNewsMsg" class="hm-news-msg" role="status" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <div class="hm-copy">
+    <span>© <span id="hmYear"></span> الإلكترونيات الحديثة. جميع الحقوق محفوظة.</span>
+    <span>مصمم بالألوان: الكحلي، الرمادي المتدرّج، والأزرق.</span>
+  </div>
+</footer>
+
+<style>
+  .hm-footer {
+    background: linear-gradient(180deg, #0f1524 0%, #0b1020 100%);
+    color: var(--hm-text, #e5e7eb);
+    border-top: 1px solid var(--hm-border, #2d333b);
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    direction: rtl;
+  }
+  .hm-foot-wrap {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    gap: 24px;
+    padding: 28px 20px;
+  }
+  .hm-title { margin: 0 0 8px; font-size: 20px }
+  .hm-desc { margin: 0 0 12px; color: #c9d1d9 }
+  .hm-social { display: flex; gap: 10px }
+  .hm-social a {
+    width: 36px; height: 36px; display: grid; place-items: center;
+    border-radius: 10px; text-decoration: none; color: #dbeafe;
+    background: #15213a; border: 1px solid #263048;
+  }
+  .hm-foot-links ul, .hm-foot-help ul { list-style: none; margin: 0; padding: 0 }
+  .hm-foot-links a, .hm-foot-help a { color: #d1d5db; text-decoration: none }
+  .hm-foot-links a:hover, .hm-foot-help a:hover { color: #8ab4f8 }
+  .hm-foot-links h4, .hm-foot-help h4, .hm-foot-newsletter h4 { margin: 0 0 10px }
+
+  .hm-news-form {
+    display: grid; grid-template-columns: 1fr auto; gap: 8px;
+    background: #0f1422; border: 1px solid #263048; border-radius: 12px; padding: 6px;
+  }
+  .hm-news-form input {
+    background: transparent; border: none; outline: none; color: #e5e7eb;
+    padding: 10px 12px;
+  }
+  .hm-news-form button {
+    background: #1f6feb; color: white; border: none; padding: 10px 16px;
+    border-radius: 10px; cursor: pointer; font-weight: 600;
+  }
+  .hm-news-form button:hover { filter: brightness(1.05) }
+  .hm-news-msg { margin-top: 8px; min-height: 1.2em; color: #93c5fd }
+
+  .hm-copy {
+    border-top: 1px solid var(--hm-border, #2d333b);
+    display: flex; gap: 12px; justify-content: space-between;
+    padding: 12px 20px; color: #9aa5b1; font-size: 14px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 960px) {
+    .hm-foot-wrap { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .hm-foot-wrap { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  window.hmFooter = (function () {
+    function subscribe(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const email = (fd.get('email') || '').toString().trim();
+      const msg = document.getElementById('hmNewsMsg');
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        msg.textContent = 'فضلاً أدخل بريدًا صالحًا.';
+        msg.style.color = '#fca5a5';
+        return false;
+      }
+      // Demo: حفظ في LocalStorage
+      try {
+        const list = JSON.parse(localStorage.getItem('hm_newsletters') || '[]');
+        list.push({ email, t: Date.now() });
+        localStorage.setItem('hm_newsletters', JSON.stringify(list));
+      } catch (_) {}
+      msg.textContent = 'تم الاشتراك بنجاح! ✨';
+      msg.style.color = '#93c5fd';
+      e.target.reset();
+      return false;
+    }
+
+    function init() {
+      const y = document.getElementById('hmYear');
+      if (y) y.textContent = new Date().getFullYear();
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+
+    return { subscribe };
+  })();
+</script>

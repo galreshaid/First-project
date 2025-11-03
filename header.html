@@ -1,0 +1,310 @@
+<!-- header.html -->
+<header class="hm-header" aria-label="رأس الموقع">
+  <div class="hm-topbar">
+    <div class="hm-brand">
+      <a href="index.html" class="hm-logo" aria-label="الإلكترونيات الحديثة">
+        <img src="media/download.jpg" alt="شعار الإلكترونيات الحديثة" class="hm-logo-img" />
+        <span class="hm-logo-text">الإلكترونيات الحديثة</span>
+      </a>
+    </div>
+
+    <form class="hm-search" role="search" aria-label="بحث المنتجات" onsubmit="return window.hmHeader.onSearch(event);">
+      <input type="search" name="q" class="hm-search-input" placeholder="ابحث عن منتج… مثل: لابتوب، شاشة 4K، سماعات" aria-label="ابحث عن منتج" />
+      <button class="hm-search-btn" type="submit">بحث</button>
+    </form>
+
+    <nav class="hm-actions" aria-label="روابط سريعة">
+      <a href="#" class="hm-action" aria-label="المفضلة">❤</a>
+      <a href="#" class="hm-action" aria-label="عربة التسوق">🛒 <span class="hm-cart-count" id="hmCartCount">0</span></a>
+      <button class="hm-burger" id="hmBurger" aria-label="قائمة">&#9776;</button>
+    </nav>
+  </div>
+
+  <nav class="hm-mega" id="hmMega" aria-label="التصنيفات">
+    <ul class="hm-mega-list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li><a href="#">لابتوبات</a></li>
+      <li><a href="#">موبايلات</a></li>
+      <li><a href="#">شاشات</a></li>
+      <li><a href="#">سماعات</a></li>
+      <li><a href="#">إكسسوارات</a></li>
+      <li><a href="#">أجهزة منزلية ذكية</a></li>
+      <li><a href="#">عروض اليوم</a></li>
+      <li><a href="contact.html" class="hm-contact-btn">اتصل بنا</a></li>
+    </ul>
+  </nav>
+
+  <!-- القائمة الجانبية للجوال -->
+  <div class="hm-mobile-menu" id="hmMobileMenu">
+    <button class="hm-close" id="hmCloseMenu" aria-label="إغلاق القائمة">×</button>
+    <ul class="hm-mobile-list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li><a href="#">لابتوبات</a></li>
+      <li><a href="#">موبايلات</a></li>
+      <li><a href="#">شاشات</a></li>
+      <li><a href="#">سماعات</a></li>
+      <li><a href="#">إكسسوارات</a></li>
+      <li><a href="#">أجهزة منزلية ذكية</a></li>
+      <li><a href="#">عروض اليوم</a></li>
+      <li><a href="contact.html" class="hm-contact-btn">اتصل بنا</a></li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  :root {
+    --hm-navy: #0d1b2a;
+    --hm-blue: #1f6feb;
+    --hm-text: #e5e7eb;
+    --hm-border: #2d333b;
+    --hm-grad: linear-gradient(135deg, #10131a 0%, #1f2430 50%, #2b2f36 100%);
+    --hm-shadow: 0 8px 24px rgba(0,0,0,.25);
+  }
+
+  .hm-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--hm-grad);
+    color: var(--hm-text);
+    box-shadow: var(--hm-shadow);
+    border-bottom: 1px solid var(--hm-border);
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    direction: rtl;
+  }
+
+  .hm-topbar {
+    display: grid;
+    grid-template-columns: 1fr minmax(300px, 680px) auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+  }
+
+  .hm-logo-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--hm-blue);
+    box-shadow: 0 0 8px rgba(31,111,235,.3);
+    background-color: white;
+  }
+
+  .hm-logo-text { font-size: 18px; font-weight: 700; color: var(--hm-text); }
+
+  .hm-search {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background: #0f1422;
+    border: 1px solid var(--hm-border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .hm-search-input {
+    padding: 10px 16px;
+    color: var(--hm-text);
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .hm-search-input::placeholder { color: #9aa5b1; }
+
+  .hm-search-btn {
+    background: var(--hm-blue);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .hm-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hm-action {
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    border-radius: 999px;
+    background: #121826;
+    border: 1px solid var(--hm-border);
+    color: var(--hm-text);
+    text-decoration: none;
+  }
+
+  .hm-cart-count {
+    min-width: 18px;
+    padding: 0 6px;
+    background: #10b981;
+    color: #041018;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  /* القائمة الأفقية (كمبيوتر) */
+  .hm-mega {
+    border-top: 1px solid var(--hm-border);
+    background: #0f1524;
+  }
+
+  .hm-mega-list {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+    margin: 0;
+    padding: 10px 20px;
+    overflow-x: auto;
+  }
+
+  .hm-mega-list a {
+    text-decoration: none;
+    color: var(--hm-text);
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: 0.2s;
+  }
+
+  .hm-mega-list a:hover {
+    border-color: var(--hm-blue);
+    background: rgba(31,111,235,.08);
+  }
+
+  .hm-contact-btn {
+    background: var(--hm-blue);
+    color: #fff !important;
+    font-weight: 600;
+  }
+
+  .hm-contact-btn:hover {
+    filter: brightness(1.1);
+  }
+
+  /* زر البرجر */
+  .hm-burger {
+    display: none;
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--hm-border);
+    background: #121826;
+    color: var(--hm-text);
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  /* القائمة الجانبية للجوال */
+  .hm-mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100vh;
+    background: #10131a;
+    box-shadow: -4px 0 20px rgba(0,0,0,.6);
+    transition: right 0.3s ease;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+  }
+
+  .hm-mobile-menu.open { right: 0; }
+
+  .hm-close {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    color: var(--hm-text);
+    cursor: pointer;
+  }
+
+  .hm-mobile-list {
+    list-style: none;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hm-mobile-list a {
+    text-decoration: none;
+    color: var(--hm-text);
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.2s;
+  }
+
+  .hm-mobile-list a:hover {
+    background: rgba(31,111,235,.15);
+  }
+
+  /* استجابة الشاشات */
+  @media (max-width: 960px) {
+    .hm-topbar {
+      grid-template-columns: auto 1fr auto;
+    }
+
+    .hm-search {
+      grid-column: 1 / -1;
+      margin-top: 10px;
+    }
+
+    .hm-mega {
+      display: none;
+    }
+
+    .hm-burger {
+      display: grid;
+      place-items: center;
+    }
+  }
+</style>
+
+<script>
+  window.hmHeader = (function () {
+    const state = { cartCountEl: null, mega: null, mobileMenu: null };
+
+    function onSearch(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const q = (fd.get("q") || "").toString().trim();
+      if (!q) return false;
+      window.location.href = "index.html?search=" + encodeURIComponent(q);
+      return false;
+    }
+
+    function toggleMenu() {
+      state.mobileMenu.classList.toggle("open");
+    }
+
+    function init() {
+      state.cartCountEl = document.getElementById("hmCartCount");
+      state.mobileMenu = document.getElementById("hmMobileMenu");
+
+      const burger = document.getElementById("hmBurger");
+      const closeBtn = document.getElementById("hmCloseMenu");
+
+      if (burger && state.mobileMenu) burger.addEventListener("click", toggleMenu);
+      if (closeBtn && state.mobileMenu) closeBtn.addEventListener("click", toggleMenu);
+
+      // تحديث عداد السلة
+      try {
+        const cart = JSON.parse(localStorage.getItem("hm_cart") || "[]");
+        if (Array.isArray(cart) && state.cartCountEl)
+          state.cartCountEl.textContent = cart.length;
+      } catch (_) {}
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+    return { onSearch };
+  })();
+</script>
